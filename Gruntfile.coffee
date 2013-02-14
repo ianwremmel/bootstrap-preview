@@ -34,17 +34,40 @@ module.exports = (grunt) ->
     less:
       development:
         files:
-          'preview/css/bootstrap.css': 'src/bootstrap.less'
-          'preview/css/bootstrap-responsive.css': 'src/responsive.less'
+          'preview/css/bootstrap.css': 'build/bootstrap.less'
+          'preview/css/bootstrap-responsive.css': 'build/responsive.less'
       production:
         options:
           yuicompress: true
         files:
-          'preview/css/bootstrap.css': 'src/bootstrap.less'
-          'preview/css/bootstrap-responsive.css': 'src/responsive.less'
+          'preview/css/bootstrap.css': 'build/bootstrap.less'
+          'preview/css/bootstrap-responsive.css': 'build/responsive.less'
+
+    buildBootstrapDotLess:
+      bootstrap: {}
+      responsive: {}
+
+  grunt.registerMultiTask 'buildBootstrapDotLess', (filename)->
+    fs = require 'fs'
+    _ = require 'lodash'
+
+    files = fs.readdirSync 'src'
+    less = fs.readFileSync 'components/bootstrap/less/' + filename + '.less', 'utf-8'
+
+    # First set the paths to the overrides
+    _(files).each (file) ->
+      less = less.replace file, '../src/' + file
+
+    # Then set the paths to the originals
+    pattern = /@import "([^.][\w\.\-_]*?)";/g # We make sure we only match items inside quotes that do not start witha leading .
+    less = less.replace(pattern, '@import "../components/bootstrap/less/$1";')
+
+    # Finally, write the new manifest to the build directory
+    fs.writeFileSync 'build/' + filename + '.less', less
 
   grunt.registerTask 'default', [
     'concat:development'
+    'buildBootstrapDotLess'
     'less:development'
     'copy:glyphicons'
   ]
