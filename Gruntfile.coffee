@@ -56,7 +56,7 @@ module.exports = (grunt) ->
 
     # First set the paths to the overrides
     _(files).each (file) ->
-      less = less.replace file, '../src/' + file
+      less = less.replace('"' + file, '"../src/' + file)
 
     # Then set the paths to the originals
     pattern = /@import "([^.][\w\.\-_]*?)";/g # We make sure we only match items inside quotes that do not start witha leading .
