@@ -3,3 +3,5 @@ components/
 node_modules/
 
 preview/bootstrap.css
+preview/css/*
+preview/img/*
