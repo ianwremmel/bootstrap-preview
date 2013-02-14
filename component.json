@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "bootstrap": "~2.3.0"
+  },
+  "exportsOverride": {
+    "bootstrap": {
+      "js": "docs/assets/js/bootstrap.js"
+    }
+  }
+}

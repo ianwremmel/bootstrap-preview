@@ -1,0 +1,8 @@
+{
+  "name": "bootstrap-preview",
+  "version": "0.0.1",
+  "devDependencies": {
+    "grunt": "0.4.0rc4",
+    "grunt-contrib-less": "~0.3.2"
+  }
+}
