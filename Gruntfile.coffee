@@ -63,6 +63,7 @@ module.exports = (grunt) ->
     less = less.replace(pattern, '@import "../components/bootstrap/less/$1";')
 
     # Finally, write the new manifest to the build directory
+    fs.mkdirSync 'build' unless fs.existsSync 'build'
     fs.writeFileSync 'build/' + filename + '.less', less
 
   grunt.registerTask 'default', [

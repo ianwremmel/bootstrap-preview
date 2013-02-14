@@ -5,3 +5,4 @@
 - add clean configuration
 - expand index.html
 - add some kind of diff task
+- figure out why the subnav bar doesn't seem to be affixing
