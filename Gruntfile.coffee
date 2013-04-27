@@ -31,7 +31,7 @@ module.exports = (grunt) ->
       development:
         options:
           components: 'components'
-          src: 'src'
+          src: 'src/bootstrap'
           dest: 'build'
 
   grunt.registerTask 'default', [
