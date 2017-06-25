@@ -1,6 +1,8 @@
 [![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
 
 # Dependencies 
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/ianwremmel/bootstrap-preview.svg)](https://greenkeeper.io/)
 - NodeJS
 - Bower
 - Grunt CLI
